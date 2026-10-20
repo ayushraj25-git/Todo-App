@@ -37,6 +37,8 @@ while True:
     print("3. Exit")
     print("4. Complete Task")
     print("5. View Completed Tasks")
+    print("6. Edit Task")
+    print("7. Delete Task")
 
     choice = input("Enter your choice: ")
 
@@ -98,7 +100,53 @@ while True:
 
             for i, task in enumerate(completed_tasks, start=1):
                 print(f"{i}. {task}")
+    elif choice == "6":
+        if not tasks:
+            print("No pending tasks.")
+        else:
+            print("\nYour Pending Tasks:")
 
+            for i, task in enumerate(tasks, start=1):
+                print(f"{i}. {task}")
+
+            try:
+                task_no = int(input("Enter task number to edit: "))
+
+                if 1 <= task_no <= len(tasks):
+                    new_task = input("Enter new task name: ")
+
+                    if new_task.strip() == "":
+                        print("Task cannot be empty!")
+                    else:
+                        tasks[task_no - 1] = new_task
+                        save_tasks()
+                        print("Task updated successfully!")
+                else:
+                    print("Invalid task number!")
+
+            except ValueError:
+                print("Please enter a valid number!")
+    elif choice == "7":
+        if not tasks:
+            print("No pending tasks.")
+        else:
+            print("\nYour Pending Tasks:")
+
+            for i, task in enumerate(tasks, start=1):
+                print(f"{i}. {task}")
+
+            try:
+                task_no = int(input("Enter task number to delete: "))
+
+                if 1 <= task_no <= len(tasks):
+                    deleted_task = tasks.pop(task_no - 1)
+                    save_tasks()
+                    print("Deleted:", deleted_task)
+                else:
+                    print("Invalid task number!")
+
+            except ValueError:
+                print("Please enter a valid number!")                    
     else:
         print("Invalid choice!")
 
