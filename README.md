@@ -8,6 +8,8 @@ A simple command-line To-Do List application built using Python.
 - View pending tasks
 - Mark tasks as completed
 - View completed tasks separately
+- Edit existing tasks
+- Delete pending tasks
 - Save tasks using JSON file storage
 - Handle invalid task-number inputs
 - Preserve tasks after restarting the application
